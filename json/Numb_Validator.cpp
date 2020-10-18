@@ -89,7 +89,7 @@ void Numb_Validator::checkExponent(string &numberStr) {
 
 }
 
-bool Numb_Validator::isValidNumber(string numberStr) {
+bool Numb_Validator::isValidNumber(string &numberStr) {
     checkMinus(numberStr);
     if (numberStr[0] == '0') {
         checkZero(numberStr);

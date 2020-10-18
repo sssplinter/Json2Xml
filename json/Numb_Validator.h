@@ -10,7 +10,7 @@
 using namespace std;
 class Numb_Validator {
 public:
-    bool isValidNumber(string numberStr);
+    bool isValidNumber(string &numberStr);
 private:
     void checkMinus(string &numberStr);
     void checkZero(string &numberStr);

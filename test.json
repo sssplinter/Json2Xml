@@ -1,0 +1,17 @@
+{
+  "name": "kristin",
+  "age": 18.34e-1,
+  "gay": true,
+  "fiends": [
+    {
+      "name": "yana",
+      "age": 18
+    },
+    {
+      "name": "stas",
+      "age":  null,
+      "gay": false
+    }
+  ]
+
+}
