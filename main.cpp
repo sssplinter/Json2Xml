@@ -3,10 +3,11 @@
 
 #include "json/Numb_Validator.h"
 #include "json/JSON_Validator.h"
+#include "json/parser/JSONParser.h"
 
 using namespace std;
 
-bool isValid(string number);
+void isValid(string number);
 
 int main() {
     string str = "{\n"
@@ -26,11 +27,11 @@ int main() {
                  "  ]\n"
                  "  \n"
                  "}";
-    cout<<isValid(str);
+    isValid(str);
     return 0;
 }
 
-bool isValid(string number) {
-    JSON_Validator validator;
-    return validator.checkObject(number);
+void isValid(string number) {
+    JSONParser parser;
+    parser.parse(number);
 }

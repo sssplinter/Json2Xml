@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+    <name>Kristina</name>
+    <age>Kristina</age>
+    <gay>true</gay>
+    <frineds>
+        <root>
+            <name>Yana</name>
+            <age>18</age>
+            <gay>null</gay>
+        </root>
+        <root>
+            <name>Yana</name>
+            <age>18</age>
+            <gay>null</gay>
+        </root>
+    </frineds>
+</root>
+
+<Kristina
+ age="18"
+ gay="true">
+
+</Kristina>
