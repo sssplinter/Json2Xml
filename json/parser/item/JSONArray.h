@@ -1,17 +1,20 @@
-//
-// Created by krist on 25.11.2020.
-//
-
 #ifndef XML_TO_JSON_JSONARRAY_H
 #define XML_TO_JSON_JSONARRAY_H
 
 
-#include "Object.h"
+#include "VirtualJSONItem.h"
 #include <list>
 
-class JSONArray : public Object {
+using namespace std;
+
+class JSONArray : public VirtualJSONItem<list<Object>> {
 public:
     void add(Object object);
+
+    list<Object> getValue() override;
+
+    JSONType getType() override;
+
 private:
     std::list<Object> value;
 };

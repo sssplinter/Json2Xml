@@ -1,14 +1,9 @@
-//
-// Created by krist on 25.11.2020.
-//
-
-#ifndef XML_TO_JSON_JSONOBJECT_H
-#define XML_TO_JSON_JSONOBJECT_H
-
-
 #include <string>
 #include <map>
 #include "VirtualJSONItem.h"
+
+#ifndef XML_TO_JSON_JSONOBJECT_H
+#define XML_TO_JSON_JSONOBJECT_H
 
 using namespace std;
 

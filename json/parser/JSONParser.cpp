@@ -1,9 +1,3 @@
-//
-// Created by krist on 24.11.2020.
-//
-
-#include <sstream>
-#include <list>
 #include "JSONParser.h"
 
 string JSONParser::parseKey() {
@@ -30,7 +24,7 @@ Object JSONParser::parseValue() {
 
 JSONObject JSONParser::parse(string sourse) {
     position = 0;
-    JSONParser::sourse = sourse;
+    JSONParser::sourse = comp(sourse);
     return parseObject();
 }
 
@@ -40,7 +34,10 @@ JSONPrimitive JSONParser::parsePrimitive() {
         stream += sourse[position];
         position++;
     }
-    position++;
+    char curr = sourse[position];
+    if (sourse[position] == ',') {
+        position++;
+    }
     JSONPrimitive primitive(stream);
     return primitive;
 }
@@ -52,7 +49,7 @@ JSONObject JSONParser::parseObject() {
         string key = parseKey();
         Object object = parseValue();
         jsonObject.put(key, object);
-        if (sourse[position == ',']) {
+        if (sourse[position] == ',') {
             position++;
         }
     }
@@ -67,9 +64,34 @@ JSONArray JSONParser::parseArray() {
     while (sourse[position] != ']') {
         Object value = parseValue();
         array.add(value);
-        if (sourse[position] != ',') {
-            position++;
+    }
+    position++;
+    return array;
+}
+
+string JSONParser::comp(string source) {
+    string initialString = "";
+    bool isString = false;
+    for (int i = 0; i < source.length(); i++) {
+        char currentChar = source[i];
+        if (currentChar == '"') {
+            isString = !isString;
+        }
+        if ((!isString && !isWhiteSpace(currentChar)) || isString) {
+            initialString += currentChar;
         }
     }
-    return array;
+    return initialString; // строка или нестрока и пустое пространство
+}
+
+bool JSONParser::isWhiteSpace(char currentChar) {
+    switch (currentChar) {
+        case ' ':
+        case '\n':
+        case '\t':
+        case '\r':
+            return true;
+        default:
+            return false;
+    }
 }

@@ -1,7 +1,3 @@
-//
-// Created by krist on 24.11.2020.
-//
-
 #ifndef XML_TO_JSON_VIRTUALJSONITEM_H
 #define XML_TO_JSON_VIRTUALJSONITEM_H
 
@@ -21,6 +17,17 @@ public:
     virtual JSONType getType();
 
 };
+
+template<typename T>
+T VirtualJSONItem<T>::getValue() {
+    T t;
+    return t;
+}
+
+template<typename T>
+JSONType VirtualJSONItem<T>::getType() {
+    return PRIMITIVE;
+}
 
 
 #endif //XML_TO_JSON_VIRTUALJSONITEM_H

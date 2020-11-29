@@ -1,7 +1,3 @@
-//
-// Created by krist on 25.11.2020.
-//
-
 #include "JSONObject.h"
 
 map<string, Object> JSONObject::getValue() {

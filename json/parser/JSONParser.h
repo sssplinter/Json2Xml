@@ -1,10 +1,5 @@
-//
-// Created by krist on 24.11.2020.
-//
-
 #ifndef XML_TO_JSON_JSONPARSER_H
 #define XML_TO_JSON_JSONPARSER_H
-
 
 #include "item/JSONObject.h"
 #include "item/JSONArray.h"
@@ -29,7 +24,12 @@ private:
     JSONPrimitive  parsePrimitive();    // числа и тд
 
     void compress();
+
+    bool isWhiteSpace(char currentChar);
+
+    string comp(string source);
+
 };
 
 
-#endif //XML_TO_JSON_JSONPARSER_H
+#endif
