@@ -1,6 +1,6 @@
-#include "JSONObject.h"
+#include "JsonObject.h"
 
-map<string, Object> JSONObject::getValue() {
+map<string, VirtualJsonItem *> JsonObject::getValue() {
     return value;
 }
 //массив и примитив
@@ -8,12 +8,12 @@ map<string, Object> JSONObject::getValue() {
 
 // примитив: значение- строка
 // массив: зн - вектор обЪектов
-JSONType JSONObject::getType() {
+JSONType JsonObject::getType() {
     return OBJECT;
 }
 
-void JSONObject::put( string key, Object val) {
-    JSONObject::value.insert(pair<string, Object>());
+void JsonObject::put(string key, VirtualJsonItem *val) {
+    JsonObject::value.insert(pair<string, VirtualJsonItem *>(key, val));
 }
 
 

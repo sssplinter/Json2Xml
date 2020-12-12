@@ -6,15 +6,14 @@ XmlType XmlArray::getType() {
 }
 
 void XmlArray::addValue(XmlObject *value) {
-    if (XmlValue *xmlValue = dynamic_cast<XmlValue *>(value)) {
-        this->value->push_back(xmlValue);
-    }
     if (XmlArray *xmlArray = dynamic_cast<XmlArray *>(value)) {
         list<XmlObject *> *arrayElements = xmlArray->getValue();
         int size = arrayElements->size();
-        for (int i =0 ; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             this->value->assign(arrayElements->begin(), arrayElements->end());
         }
+    } else {
+        this->value->push_back(value);
     }
 }
 

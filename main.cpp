@@ -1,34 +1,30 @@
 #include <iostream>
 #include <string>
 
-#include "json/Numb_Validator.h"
-#include "json/JSON_Validator.h"
 #include "json/parser/JSONParser.h"
-#include "xml/XML_Validator.h"
 #include "xml/xml_parser/XML_Parser.h"
+#include "converter/Converter.h"
+#include "xml/presenter/XmlPresenter.h"
 
 using namespace std;
 
 void isValid(string number);
 
 int main() {
-    string str = "{\n"
-                 "  \"name\": \"kristin\",\n"
-                 "  \"age\": 18.34e-1,\n"
-                 "  \"gay\": true,\n"
-                 "  \"fiends\": [\n"
-                 "    {\n"
-                 "      \"name\": \"yana\",\n"
-                 "      \"age\": 18\n"
-                 "    },\n"
-                 "    {\n"
-                 "      \"name\": \"stas\",\n"
-                 "      \"age\":  null,\n"
-                 "      \"gay\": \"false\"\n"
-                 "    }\n"
-                 "  ]\n"
-                 "  \n"
-                 "}";
+    string json = "{\n"
+                  "  \"name\": \"sasha\",\n"
+                  "  \"age\": 1,\n"
+                  "  \"friends\": [\n"
+                  "    {\n"
+                  "      \"name\": \"kristina\",\n"
+                  "      \"age\": 2,\n"
+                  "    },\n"
+                  "    {\n"
+                  "      \"name\": \"stas\",\n"
+                  "      \"age\": 3,\n"
+                  "    }\n"
+                  "  ]\n"
+                  "}";
 
     string xml = "<root>"
                  "  <name>Kristina</name>"
@@ -39,17 +35,16 @@ int main() {
                  "      <gay> null</gay>"
                  "   </root>"
                  "</root>";
-    isValid(xml);
+    isValid(json);
     return 0;
 }
 
 void isValid(string number) {
-//    JSONParser parser;
-//    parser.parse(number);
-    XML_Parser parser;
-    XmlElement *res = parser.parse(number);
-    if (res) {
-        cout << "yeeeees" << endl;
-    }
-
+    JSONParser jsonParser;
+    Converter converter;
+    XmlPresenter xmlPresenter;
+    JsonObject* jsonObject = jsonParser.parse(number);
+    XmlElement* xmlElement = converter.convertJsonToXml(jsonObject);
+    string result = xmlPresenter.convertToString(xmlElement);
+    cout << result;
 }

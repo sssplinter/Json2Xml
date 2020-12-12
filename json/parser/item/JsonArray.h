@@ -2,21 +2,21 @@
 #define XML_TO_JSON_JSONARRAY_H
 
 
-#include "VirtualJSONItem.h"
+#include "VirtualJsonItem.h"
 #include <list>
 
 using namespace std;
 
-class JSONArray : public VirtualJSONItem<list<Object>> {
+class JsonArray : public VirtualJsonItem {
 public:
-    void add(Object object);
+    void add(VirtualJsonItem *object);
 
-    list<Object> getValue() override;
+    list<VirtualJsonItem *> getValue();
 
     JSONType getType() override;
 
 private:
-    std::list<Object> value;
+    list<VirtualJsonItem *> value;
 };
 
 

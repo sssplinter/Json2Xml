@@ -2,16 +2,16 @@
   "name": "kristin",
   "age": 18.34e-1,
   "gay": true,
-  "fiends": [
+  "friends": [
     {
-      "name": "yana",
-      "age": 18
+      "name": "kristin",
+      "age": 18.34e-1,
+      "gay": true
     },
     {
-      "name": "stas",
-      "age":  null,
-      "gay": false
+      "name": "kristin",
+      "age": 18.34e-1,
+      "gay": true
     }
   ]
-
 }

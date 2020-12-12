@@ -1,22 +1,22 @@
 #include <string>
 #include <map>
-#include "VirtualJSONItem.h"
+#include "VirtualJsonItem.h"
 
 #ifndef XML_TO_JSON_JSONOBJECT_H
 #define XML_TO_JSON_JSONOBJECT_H
 
 using namespace std;
 
-class JSONObject : public VirtualJSONItem<map<string, Object> > {
+class JsonObject : public VirtualJsonItem {
 public:
-    map<string, Object> getValue();
+    map<string, VirtualJsonItem *> getValue();
 
     JSONType getType();
 
-    void put(string key, Object value);
+    void put(string key, VirtualJsonItem *value);
 
 private:
-    map<string, Object> value;
+    map<string, VirtualJsonItem *> value;
 };
 
 

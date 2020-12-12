@@ -2,15 +2,15 @@
 #define XML_TO_JSON_JSONPRIMITIVE_H
 
 
-#include "VirtualJSONItem.h"
+#include "VirtualJsonItem.h"
 #include <string>
 
 using namespace std;
-class JSONPrimitive : public VirtualJSONItem<string>{
+class JsonPrimitive : public VirtualJsonItem{
 public:
-    JSONPrimitive(string value);
+    JsonPrimitive(string value);
 
-    string getValue() override;
+    string getValue();
 
     JSONType getType() override;
 

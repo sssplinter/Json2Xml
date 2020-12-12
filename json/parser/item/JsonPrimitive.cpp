@@ -1,14 +1,14 @@
-#include "JSONPrimitive.h"
+#include "JsonPrimitive.h"
 
-JSONPrimitive::JSONPrimitive(string value) {
-    JSONPrimitive::value = value;
+JsonPrimitive::JsonPrimitive(string value) {
+    JsonPrimitive::value = value;
 }
 
-string JSONPrimitive::getValue() {
+string JsonPrimitive::getValue() {
     return value;
 }
 
-JSONType JSONPrimitive::getType() {
+JSONType JsonPrimitive::getType() {
     return PRIMITIVE;
 }
 

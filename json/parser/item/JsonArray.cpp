@@ -1,13 +1,13 @@
-#include "JSONArray.h"
+#include "JsonArray.h"
 
-void JSONArray::add(Object object) {
+void JsonArray::add(VirtualJsonItem *object) {
     value.push_back(object);
 }
 
-list<Object> JSONArray::getValue() {
+list<VirtualJsonItem*> JsonArray::getValue() {
     return value;
 }
 
-JSONType JSONArray::getType() {
+JSONType JsonArray::getType() {
     return ARRAY;
 }
