@@ -1,13 +1,22 @@
 #ifndef XML_TO_JSON_XMLARRAY_H
 #define XML_TO_JSON_XMLARRAY_H
 
-
 #include "XmlObject.h"
+#include <list>
 
-class XmlArray : XmlObject {
+using namespace std;
 
+class XmlArray : public XmlObject {
+public:
+    XmlArray();
 
+    XmlType getType() override;
 
+    void addValue(XmlObject *value);
+
+    list<XmlObject*> *getValue();
+private:
+    list<XmlObject*>* value;
 };
 
 

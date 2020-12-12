@@ -2,8 +2,8 @@
 
 string JSONParser::parseKey() {
     string stream;
-    while (sourse[position] != ':') {
-        stream += sourse[position];
+    while (source[position] != ':') {
+        stream += source[position];
         position++;
     }
     position++;
@@ -11,11 +11,11 @@ string JSONParser::parseKey() {
     return stream;
 }
 
-Object JSONParser::parseValue() {
-    if(sourse[position] == ',') {
+VirtualJsonItem* JSONParser::parseValue() {
+    if(source[position] == ',') {
         position++;
     }
-    const char c = sourse[position];
+    const char c = source[position];
     if (c == '{') {
         return parseObject();
     } else if (c == '[') {
@@ -25,35 +25,34 @@ Object JSONParser::parseValue() {
     }
 }
 
-JSONObject JSONParser::parse(string sourse) {
+JsonObject* JSONParser::parse(string sourse) {
     position = 0;
-    JSONParser::sourse = comp(sourse);
+    JSONParser::source = comp(sourse);
     return parseObject();
 }
 
-JSONPrimitive JSONParser::parsePrimitive() {
+JsonPrimitive* JSONParser::parsePrimitive() {
     string stream;
-    while (sourse[position] != ',' && sourse[position] != '}' && sourse[position] != ']') {
-        stream += sourse[position];
+    while (source[position] != ',' && source[position] != '}' && source[position] != ']') {
+        stream += source[position];
         position++;
     }
-    char curr = sourse[position];       // todo для отладки
-    if (sourse[position] == ',') {
+    if (source[position] == ',') {
         position++;
     }
-    JSONPrimitive primitive(stream);
+    JsonPrimitive* primitive = new JsonPrimitive (stream);
     return primitive;
 }
 
-JSONObject JSONParser::parseObject() {
+JsonObject* JSONParser::parseObject() {
     position++;
-    JSONObject jsonObject;
+    JsonObject* jsonObject = new JsonObject();
     string key;
-    while (sourse[position] != '}') {
+    while (source[position] != '}') {
         key = parseKey();
-        Object object = parseValue();
-        jsonObject.put(key, object);
-        if (sourse[position] == ',') {
+        VirtualJsonItem *object = parseValue();
+        jsonObject->put(key, object);
+        if (source[position] == ',') {
             position++;
         }
     }
@@ -62,12 +61,12 @@ JSONObject JSONParser::parseObject() {
     return jsonObject;
 }
 
-JSONArray JSONParser::parseArray() {
+JsonArray* JSONParser::parseArray() {
     position++;
-    JSONArray array;
-    while (sourse[position] != ']') {
-        Object value = parseValue();
-        array.add(value);
+    JsonArray* array = new JsonArray();
+    while (source[position] != ']') {
+        VirtualJsonItem* value = parseValue();
+        array->add(value);
     }
     position++;
     return array;

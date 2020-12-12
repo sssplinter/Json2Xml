@@ -10,7 +10,7 @@ class XmlValue : public XmlObject{
 public:
     XmlValue(string &value);
 
-    bool isElement() override;
+    XmlType getType() override;
 
     string getValue();
 private:

@@ -1,28 +1,27 @@
 #ifndef XML_TO_JSON_JSONPARSER_H
 #define XML_TO_JSON_JSONPARSER_H
 
-#include "item/JSONObject.h"
-#include "item/JSONArray.h"
-#include "item/JSONPrimitive.h"
+#include "item/JsonObject.h"
+#include "item/JsonArray.h"
+#include "item/JsonPrimitive.h"
 
 class JSONParser {
 public:
-    JSONObject parse(string sourse);
+    JsonObject* parse(string sourse);
 
 private:
-    string sourse;
+    string source;
     int position;
 
     string parseKey();           // распарсивает строку
 
-    Object parseValue();
+    VirtualJsonItem* parseValue();
 
-    JSONArray parseArray();
+    JsonArray* parseArray();
 
-    JSONObject parseObject();
+    JsonObject* parseObject();
 
-    JSONPrimitive  parsePrimitive();    // числа и тд
-
+    JsonPrimitive*  parsePrimitive();    // числа и тд
 
     static bool isWhiteSpace(char currentChar);
 

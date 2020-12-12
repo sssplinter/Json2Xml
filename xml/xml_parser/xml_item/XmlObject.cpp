@@ -1,5 +1,5 @@
 #include "XmlObject.h"
 
-bool XmlObject::isElement() {
-    return false;
+XmlType XmlObject::getType() {
+    return XML_OBJECT;
 }
