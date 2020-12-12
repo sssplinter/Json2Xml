@@ -2,13 +2,13 @@
 
 <root>
     <name>Kristina</name>
-    <age>Kristina</age>
-    <gay>true</gay>
+    <age>Ты гей</age>
+    <gay>я хз как себя вести в таком состоянии</gay>
     <frineds>
         <root>
-            <name>Yana</name>
-            <age>18</age>
-            <gay>null</gay>
+            <name>когда хз чего мне хочется больше сделать</name>
+            <age>прибить тебя</age>
+            <gay>или заобнимать</gay>
         </root>
         <root>
             <name>Yana</name>
@@ -18,8 +18,3 @@
     </frineds>
 </root>
 
-<Kristina
- age="18"
- gay="true">
-
-</Kristina>

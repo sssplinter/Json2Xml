@@ -4,6 +4,7 @@
 #include "json/Numb_Validator.h"
 #include "json/JSON_Validator.h"
 #include "json/parser/JSONParser.h"
+#include "xml/XML_Validator.h"
 
 using namespace std;
 
@@ -27,11 +28,35 @@ int main() {
                  "  ]\n"
                  "  \n"
                  "}";
-    isValid(str);
+
+    string xml = "<root>"
+                 "  <name>Kristina</name>"
+                 "  <age>Kristina</age>"
+                 "  <gay>true</gay>"
+                 "  <frineds>"
+                 "     <root>"
+                 "         <name> Yana</name>"
+                 "         <age> 18 </age>"
+                 "         <gay> null</gay>"
+                 "    </root>"
+                 "    <root>"
+                 "         <name> Yana</name>"
+                 "         <age> 18 </age>"
+                 "         <gay> null</gay>"
+                 "    </root>"
+                 "  </frineds>"
+                 "</root>";
+    isValid(xml);
     return 0;
 }
 
 void isValid(string number) {
-    JSONParser parser;
-    parser.parse(number);
+//    JSONParser parser;
+//    parser.parse(number);
+    XML_Validator validator;
+    bool res = validator.checkXML(number);
+    if (res) {
+        cout << "yeeeees" << endl;
+    }
+
 }

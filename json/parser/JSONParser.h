@@ -23,9 +23,8 @@ private:
 
     JSONPrimitive  parsePrimitive();    // числа и тд
 
-    void compress();
 
-    bool isWhiteSpace(char currentChar);
+    static bool isWhiteSpace(char currentChar);
 
     string comp(string source);
 

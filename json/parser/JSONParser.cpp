@@ -12,6 +12,9 @@ string JSONParser::parseKey() {
 }
 
 Object JSONParser::parseValue() {
+    if(sourse[position] == ',') {
+        position++;
+    }
     const char c = sourse[position];
     if (c == '{') {
         return parseObject();
@@ -34,7 +37,7 @@ JSONPrimitive JSONParser::parsePrimitive() {
         stream += sourse[position];
         position++;
     }
-    char curr = sourse[position];
+    char curr = sourse[position];       // todo для отладки
     if (sourse[position] == ',') {
         position++;
     }
@@ -45,8 +48,9 @@ JSONPrimitive JSONParser::parsePrimitive() {
 JSONObject JSONParser::parseObject() {
     position++;
     JSONObject jsonObject;
+    string key;
     while (sourse[position] != '}') {
-        string key = parseKey();
+        key = parseKey();
         Object object = parseValue();
         jsonObject.put(key, object);
         if (sourse[position] == ',') {
@@ -72,8 +76,10 @@ JSONArray JSONParser::parseArray() {
 string JSONParser::comp(string source) {
     string initialString = "";
     bool isString = false;
-    for (int i = 0; i < source.length(); i++) {
-        char currentChar = source[i];
+    int l = source.length();
+    char currentChar;
+    for (int i = 0; i < l; i++) {
+        currentChar = source[i];
         if (currentChar == '"') {
             isString = !isString;
         }
