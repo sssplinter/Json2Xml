@@ -25,10 +25,10 @@ void XmlValidator::checkElement(string &check_str) {
         string tag = take_tag(check_str);
         cout << tag << endl;
         xm_stack.push(tag);
-        if (compare_tags(check_str)) {
-            take_tag(check_str);
-            xm_stack.pop();
-        }
+//        if (compare_tags(check_str)) {
+//            take_tag(check_str);
+//            xm_stack.pop();
+//        }
     }
 
 }
