@@ -1,4 +1,5 @@
 #include "JsonPresenter.h"
+#include "../../json/JsonValidator.h"
 
 #define OFFSET 2
 
@@ -74,8 +75,34 @@ string JsonPresenter::convertToString(JsonArray *jsonArray) {
 
 string JsonPresenter::convertToString(JsonPrimitive *jsonPrimitive) {
     string result;
-    result += "\"" + jsonPrimitive->getValue() + "\"";
+    string value = jsonPrimitive->getValue();
+    if (isSpecialValue(value)) {
+        result += value;
+    } else {
+        result += "\"" + value + "\"";
+    }
     return result;
+}
+
+bool JsonPresenter::isSpecialValue(string jsonString) {
+    JsonValidator jsonValidator;
+    char currentChar = jsonString[0];
+    try {
+        if (currentChar == 't') {
+            jsonValidator.checkTrue(jsonString);
+        } else if (currentChar == 'f') {
+            jsonValidator.checkFalse(jsonString);
+        } else if (currentChar == 'n') {
+            jsonValidator.checkNull(jsonString);
+        } else if (currentChar >= '0' && currentChar <= '9') {
+            jsonValidator.checkNumber(jsonString);
+        } else {
+            return false;
+        }
+        return true;
+    } catch (InvalidJsonException e) {
+        return false;
+    }
 }
 
 string JsonPresenter::convertToString(VirtualJsonItem *jsonItem) {

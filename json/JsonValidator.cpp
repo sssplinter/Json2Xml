@@ -2,10 +2,10 @@
 // Created by krist on 17.10.2020.
 //
 
-#include "JSON_Validator.h"
+#include "JsonValidator.h"
 #include "Numb_Validator.h"
 
-bool JSON_Validator::checkObject(string &jsonString) {
+bool JsonValidator::checkObject(string &jsonString) {
     if (jsonString[0] == '{') {
         jsonString.erase(0, 1);
     }
@@ -34,7 +34,7 @@ bool JSON_Validator::checkObject(string &jsonString) {
     return jsonString.length() == 0;
 }
 
-void JSON_Validator::checkString(string &jsonString) {
+void JsonValidator::checkString(string &jsonString) {
     int length = 0;
     char currentChar = jsonString[length];
     if (jsonString[length] == '"') {
@@ -52,7 +52,7 @@ void JSON_Validator::checkString(string &jsonString) {
     jsonString.erase(0, length);
 }
 
-void JSON_Validator::checkArray(string &jsonString) {
+void JsonValidator::checkArray(string &jsonString) {
     if (jsonString[0] == '[') {
         jsonString.erase(0, 1);
     }
@@ -72,12 +72,14 @@ void JSON_Validator::checkArray(string &jsonString) {
     }
 }
 
-void JSON_Validator::checkNumber(string &jsonNumber) {
+void JsonValidator::checkNumber(string &jsonNumber) {
     Numb_Validator numberValidator;
-    numberValidator.isValidNumber(jsonNumber);
+    if (!numberValidator.isValidNumber(jsonNumber)) {
+        throw InvalidJsonException("Invalid number token");
+    }
 }
 
-void JSON_Validator::checkTrue(string &jsonTrue) {
+void JsonValidator::checkTrue(string &jsonTrue) {
     if (jsonTrue[0] != 't' ||
         jsonTrue[1] != 'r' ||
         jsonTrue[2] != 'u' ||
@@ -87,7 +89,7 @@ void JSON_Validator::checkTrue(string &jsonTrue) {
     jsonTrue.erase(0, 4);
 }
 
-void JSON_Validator::checkFalse(string &jsonFalse) {
+void JsonValidator::checkFalse(string &jsonFalse) {
     if (jsonFalse[0] != 'f' ||
         jsonFalse[1] != 'a' ||
         jsonFalse[2] != 'l' ||
@@ -98,7 +100,7 @@ void JSON_Validator::checkFalse(string &jsonFalse) {
     jsonFalse.erase(0, 5);
 }
 
-void JSON_Validator::checkNull(string &jsonString) {
+void JsonValidator::checkNull(string &jsonString) {
     if (jsonString[0] != 'n' ||
         jsonString[1] != 'u' ||
         jsonString[2] != 'l' ||
@@ -108,7 +110,7 @@ void JSON_Validator::checkNull(string &jsonString) {
     jsonString.erase(0, 4);
 }
 
-void JSON_Validator::checkWhiteSpace(string &jsonString) {
+void JsonValidator::checkWhiteSpace(string &jsonString) {
     int length = 0;
     char currentChar = jsonString[length];
     while (isWhiteSpace(currentChar)) {
@@ -119,7 +121,7 @@ void JSON_Validator::checkWhiteSpace(string &jsonString) {
     jsonString.erase(0, length);
 }
 
-void JSON_Validator::checkValue(string &jsonString) {
+void JsonValidator::checkValue(string &jsonString) {
     checkWhiteSpace(jsonString);
     char currentChar = jsonString[0];
     switch (currentChar) {

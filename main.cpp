@@ -14,36 +14,31 @@ void isValid(string number);
 
 int main() {
     string json = "{\n"
-                  "  \"name\": \"sasha\",\n"
+                  "  \"name\": \"Kristina\",\n"
                   "  \"friends\": [\n"
                   "    {\n"
-                  "      \"name\": \"kristina\",\n"
+                  "      \"name\": \"Stas\"\n"
+                  "    },\n"
+                  "    {\n"
+                  "      \"name\": \"Yana\"\n"
                   "    }\n"
                   "  ]\n"
                   "}";
 
     string xml = "<root>\n"
-                 "    <friends>\n"
-                 "        <root>\n"
-                 "            <name>\n"
-                 "                kristina\n"
-                 "            </name>\n"
-                 "        </root>\n"
-                 "    </friends>\n"
-                 "    <name>\n"
-                 "        sasha\n"
-                 "    </name>\n"
+                 "    <name>Kristina</name>\n"
+                 "    <age>18</age>\n"
                  "</root>";
-    isValid(json);
+    isValid(xml);
     return 0;
 }
 
 void isValid(string number) {
-    JsonParser parser;
-    JsonToXmlConverter converter;
-    XmlPresenter presenter;
-    JsonObject* before = parser.parse(number);
-    XmlElement* after = converter.convertJsonToXml(before);
+    XmlParser parser;
+    XmlToJsonConverter converter;
+    JsonPresenter presenter;
+    XmlElement* before = parser.parse(number);
+    JsonObject* after = converter.convertJsonToXml(before);
     string result = presenter.convertToString(after);
     cout << result;
 }

@@ -22,6 +22,8 @@ private:
 
     string getOffset();
 
+    bool isSpecialValue(string jsonString);
+
 };
 
 

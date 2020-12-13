@@ -1,1 +1,11 @@
-"{\n  \"\"friends\"\" : \n    [\n        {\n      \"\"name\"\" : \"\"kristina\"\"\n    }\n\n  ],\n"
+{
+  "name": "Kristina",
+  "friends": [
+    {
+      "name": "Stas"
+    },
+    {
+      "name": "Yana"
+    }
+  ]
+}

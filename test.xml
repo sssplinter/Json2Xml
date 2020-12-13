@@ -1,12 +1,4 @@
 <root>
-    <friends>
-        <root>
-            <name>
-                kristina
-            </name>
-        </root>
-    </friends>
-    <name>
-        sasha
-    </name>
+    <name>Kristina</name>
+    <age>18</age>
 </root>
