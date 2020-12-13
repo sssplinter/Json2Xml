@@ -2,21 +2,21 @@
 // Created by krist on 18.10.2020.
 //
 
-#include "XML_Validator.h"
+#include "XmlValidator.h"
 #include <iostream>         //todo
 
-void XML_Validator::checkProlog(string &xmlStr) {
+void XmlValidator::checkProlog(string &xmlStr) {
 //    int length = 0;
 //    if(xmlStr[0] == '<' && xmlStr[1] == '?') {
 //
 //    }
 }
 
-void XML_Validator::checkAttribute(string &check_str) {
+void XmlValidator::checkAttribute(string &check_str) {
 
 }
 
-void XML_Validator::checkElement(string &check_str) {
+void XmlValidator::checkElement(string &check_str) {
     checkValue(check_str);
     if (!xm_stack.empty() && compare_tags(check_str)) {
         take_tag(check_str);
@@ -34,13 +34,13 @@ void XML_Validator::checkElement(string &check_str) {
 }
 
 
-void XML_Validator::checkValue(string &check_str) {
+void XmlValidator::checkValue(string &check_str) {
     while (check_str[0] != '<') {
         check_str.erase(0, 1);
     }
 }
 
-bool XML_Validator::checkXML(string xmlStr) {
+bool XmlValidator::checkXML(string xmlStr) {
 
     while (xmlStr != "") {
         checkElement(xmlStr);
@@ -48,7 +48,7 @@ bool XML_Validator::checkXML(string xmlStr) {
     return xm_stack.empty();
 }
 
-string XML_Validator::take_tag(string &check_str) {
+string XmlValidator::take_tag(string &check_str) {
     while (check_str[0] == ' ') {
         check_str.erase(0, 1);
     }
@@ -64,7 +64,7 @@ string XML_Validator::take_tag(string &check_str) {
     return tag;
 }
 
-bool XML_Validator::compare_tags(string check_str) {
+bool XmlValidator::compare_tags(string check_str) {
     if (check_str[0] == '<') {
         check_str.erase(0, 1);
     }

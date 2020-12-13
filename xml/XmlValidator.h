@@ -2,15 +2,15 @@
 // Created by krist on 18.10.2020.
 //
 
-#ifndef XML_TO_JSON_XML_VALIDATOR_H
-#define XML_TO_JSON_XML_VALIDATOR_H
+#ifndef XML_TO_JSON_XMLVALIDATOR_H
+#define XML_TO_JSON_XMLVALIDATOR_H
 
 #include <string>
 #include <stack>
 
 using namespace std;
 
-class XML_Validator {
+class XmlValidator {
 private:
     stack<string> xm_stack;
 
@@ -33,4 +33,4 @@ public:
 
 };
 
-#endif //XML_TO_JSON_XML_VALIDATOR_H
+#endif //XML_TO_JSON_XMLVALIDATOR_H

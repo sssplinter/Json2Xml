@@ -1,17 +1,17 @@
 #include <string>
 #include <map>
-#include "xml_item/XmlObject.h"
-#include "xml_item/XmlValue.h"
-#include "xml_item/XmlElement.h"
+#include "item/XmlObject.h"
+#include "item/XmlValue.h"
+#include "item/XmlElement.h"
 
 #ifndef XML_TO_JSON_XML_PARSER_H
 #define XML_TO_JSON_XML_PARSER_H
 
 using namespace std;
 
-class XML_Parser {
+class XmlParser {
 public:
-    XmlElement* parse(string &xml_str);
+    XmlElement* parse(string &str);
 private:
 
     string source = "";

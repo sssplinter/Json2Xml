@@ -1,8 +1,8 @@
-#include "Converter.h"
+#include "JsonToXmlConverter.h"
 #include "../json/parser/item/JsonPrimitive.h"
-#include "../xml/xml_parser/xml_item/XmlValue.h"
+#include "../xml/parser/item/XmlValue.h"
 
-XmlElement *Converter::convertJsonToXml(JsonObject *jsonObject) {
+XmlElement *JsonToXmlConverter::convertJsonToXml(JsonObject *jsonObject) {
     XmlElement *xmlElement = new XmlElement();
     map<string, VirtualJsonItem*> jsonObjects = jsonObject->getValue();
     for (auto iter = jsonObjects.begin(); iter != jsonObjects.end(); iter++) {
@@ -25,7 +25,7 @@ XmlElement *Converter::convertJsonToXml(JsonObject *jsonObject) {
     return xmlElement;
 }
 
-XmlArray *Converter::convertJsonToXml(JsonArray *jsonArray) {
+XmlArray *JsonToXmlConverter::convertJsonToXml(JsonArray *jsonArray) {
     XmlArray *xmlArray = new XmlArray();
     list<VirtualJsonItem*> jsonObjects = jsonArray->getValue();
     for (auto iter = jsonObjects.begin(); iter != jsonObjects.end(); iter++) {

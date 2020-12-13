@@ -1,17 +1,1 @@
-{
-  "name": "kristin",
-  "age": 18.34e-1,
-  "gay": true,
-  "friends": [
-    {
-      "name": "kristin",
-      "age": 18.34e-1,
-      "gay": true
-    },
-    {
-      "name": "kristin",
-      "age": 18.34e-1,
-      "gay": true
-    }
-  ]
-}
+"{\n  \"\"friends\"\" : \n    [\n        {\n      \"\"name\"\" : \"\"kristina\"\"\n    }\n\n  ],\n"

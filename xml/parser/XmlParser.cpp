@@ -1,7 +1,7 @@
-#include "XML_Parser.h"
+#include "XmlParser.h"
 
-XmlElement *XML_Parser::parse(string &xml_str) {
-    source = comp(xml_str);
+XmlElement *XmlParser::parse(string &str) {
+    source = comp(str);
     position = 0;
     position += 6; // <root>
     XmlElement *xmlElement = parseElement();
@@ -9,7 +9,7 @@ XmlElement *XML_Parser::parse(string &xml_str) {
     return xmlElement;
 }
 
-XmlElement *XML_Parser::parseElement() {
+XmlElement *XmlParser::parseElement() {
     XmlElement *element = new XmlElement();
     while (source[position + 1] != '/') {
         string elementName = "";
@@ -41,11 +41,11 @@ XmlElement *XML_Parser::parseElement() {
     return element;
 }
 
-map<string, XmlValue> XML_Parser::parseAttributes() {
+map<string, XmlValue> XmlParser::parseAttributes() {
     return map<string, XmlValue>();
 }
 
-XmlValue *XML_Parser::parseValue() {
+XmlValue *XmlParser::parseValue() {
 
     string xmlValue = "";
     while (source[position] != '<') {
@@ -56,7 +56,7 @@ XmlValue *XML_Parser::parseValue() {
     return new XmlValue(xmlValue);
 }
 
-string XML_Parser::comp(string source) {
+string XmlParser::comp(string source) {
     string initialString = "";
     bool isString = false;
     int l = source.length();
@@ -73,7 +73,7 @@ string XML_Parser::comp(string source) {
     return initialString; // строка или нестрока и пустое пространство
 }
 
-bool XML_Parser::isWhiteSpace(char currentChar) {
+bool XmlParser::isWhiteSpace(char currentChar) {
     switch (currentChar) {
         case ' ':
         case '\n':

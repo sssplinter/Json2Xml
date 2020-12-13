@@ -2,9 +2,9 @@
 #define XML_TO_JSON_XMLPRESENTER_H
 
 #include "string"
-#include "../xml_parser/xml_item/XmlElement.h"
-#include "../xml_parser/xml_item/XmlArray.h"
-#include "../xml_parser/xml_item/XmlValue.h"
+#include "../parser/item/XmlElement.h"
+#include "../parser/item/XmlArray.h"
+#include "../parser/item/XmlValue.h"
 
 using namespace std;
 

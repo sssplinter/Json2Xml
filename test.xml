@@ -1,20 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <root>
-    <name>Kristina</name>
-    <age>Ты гей</age>
-    <gay>я хз как себя вести в таком состоянии</gay>
-    <frineds>
+    <friends>
         <root>
-            <name>когда хз чего мне хочется больше сделать</name>
-            <age>прибить тебя</age>
-            <gay>или заобнимать</gay>
+            <name>
+                kristina
+            </name>
         </root>
-        <root>
-            <name>Yana</name>
-            <age>18</age>
-            <gay>null</gay>
-        </root>
-    </frineds>
+    </friends>
+    <name>
+        sasha
+    </name>
 </root>
-
