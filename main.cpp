@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "json/parser/JSONParser.h"
+#include "json/parser/JsonParser.h"
 #include "xml/parser/XmlParser.h"
 #include "converter/JsonToXmlConverter.h"
 #include "xml/presenter/XmlPresenter.h"
@@ -34,16 +34,16 @@ int main() {
                  "        sasha\n"
                  "    </name>\n"
                  "</root>";
-    isValid(xml);
+    isValid(json);
     return 0;
 }
 
 void isValid(string number) {
-    XmlParser jsonParser;
-    XmlToJsonConverter converter;
-    JsonPresenter presenter;
-    XmlElement* xmlElement = jsonParser.parse(number);
-    JsonObject* jsonObject = converter.convertJsonToXml(xmlElement);
-    string result = presenter.convertToString(jsonObject);
+    JsonParser parser;
+    JsonToXmlConverter converter;
+    XmlPresenter presenter;
+    JsonObject* before = parser.parse(number);
+    XmlElement* after = converter.convertJsonToXml(before);
+    string result = presenter.convertToString(after);
     cout << result;
 }

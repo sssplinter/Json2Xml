@@ -5,9 +5,9 @@
 #include "item/JsonArray.h"
 #include "item/JsonPrimitive.h"
 
-class JSONParser {
+class JsonParser {
 public:
-    JsonObject* parse(string sourse);
+    JsonObject* parse(string source);
 
 private:
     string source;

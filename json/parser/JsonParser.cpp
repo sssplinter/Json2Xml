@@ -1,9 +1,11 @@
-#include "JSONParser.h"
+#include "JsonParser.h"
 
-string JSONParser::parseKey() {
+string JsonParser::parseKey() {
     string stream;
     while (source[position] != ':') {
-        stream += source[position];
+        if (source[position] != '\"') {
+            stream += source[position];
+        }
         position++;
     }
     position++;
@@ -11,7 +13,7 @@ string JSONParser::parseKey() {
     return stream;
 }
 
-VirtualJsonItem* JSONParser::parseValue() {
+VirtualJsonItem* JsonParser::parseValue() {
     if(source[position] == ',') {
         position++;
     }
@@ -25,16 +27,18 @@ VirtualJsonItem* JSONParser::parseValue() {
     }
 }
 
-JsonObject* JSONParser::parse(string sourse) {
+JsonObject* JsonParser::parse(string source) {
     position = 0;
-    JSONParser::source = comp(sourse);
+    JsonParser::source = comp(source);
     return parseObject();
 }
 
-JsonPrimitive* JSONParser::parsePrimitive() {
+JsonPrimitive* JsonParser::parsePrimitive() {
     string stream;
     while (source[position] != ',' && source[position] != '}' && source[position] != ']') {
-        stream += source[position];
+        if (source[position] != '\"') {
+            stream += source[position];
+        }
         position++;
     }
     if (source[position] == ',') {
@@ -44,7 +48,7 @@ JsonPrimitive* JSONParser::parsePrimitive() {
     return primitive;
 }
 
-JsonObject* JSONParser::parseObject() {
+JsonObject* JsonParser::parseObject() {
     position++;
     JsonObject* jsonObject = new JsonObject();
     string key;
@@ -61,7 +65,7 @@ JsonObject* JSONParser::parseObject() {
     return jsonObject;
 }
 
-JsonArray* JSONParser::parseArray() {
+JsonArray* JsonParser::parseArray() {
     position++;
     JsonArray* array = new JsonArray();
     while (source[position] != ']') {
@@ -72,8 +76,8 @@ JsonArray* JSONParser::parseArray() {
     return array;
 }
 
-string JSONParser::comp(string source) {
-    string initialString = "";
+string JsonParser::comp(string source) {
+    string initialString;
     bool isString = false;
     int l = source.length();
     char currentChar;
@@ -89,7 +93,7 @@ string JSONParser::comp(string source) {
     return initialString; // строка или нестрока и пустое пространство
 }
 
-bool JSONParser::isWhiteSpace(char currentChar) {
+bool JsonParser::isWhiteSpace(char currentChar) {
     switch (currentChar) {
         case ' ':
         case '\n':
